@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			._calloutAllowDisallow_ListItem
+			{
+				margin-bottom: 6px;
+			}
+			._calloutAllowDisallow_ListItem:last-child
+			{
+				margin-bottom: 0px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div style="
+				border: 1px solid rgba(255,255,255, 0.15);
+				border-radius: 4px;
+			">
+			<div class="TextBody1"
+				style="
+					color: white;
+					background-color: rgba(255,255,255, 0.1);
+					padding: 3px 6px;
+					margin: 0px;
+			">
+				{{title}}
+			</div>
+			<div style="
+				background-color: rgba(30,30,30, 0.1);
+				border-radius: 0px 0px 4px 4px;
+				padding: 6px;
+			">
+				
+				<div ng-if="header != undefined" ng-bind-html="header" class="TextBody2 Centered ItalicText DimText1"
+					style="
+					margin-bottom: 0px;
+				">
+				</div>
+				
+				<div class="GenericColumns ClearfixContainer"
+					style="
+						width: 100%;
+						padding: 0px 8px;
+					">
+					<div class="TwoColumn">
+						<div class="Left1">
+							
+							<div>
+								<div ng-repeat="item in allowed" class="_calloutAllowDisallow_ListItem">
+									<div>
+										<span class="VerticalCenterAlignHack"
+											style="
+											color: rgba(255,255,255, 1.0);
+											font-family: 'montserrat';
+											font-size: 1em;
+											font-weight: 400;
+											background-color: rgba(0,255,0, 0.4);
+											border-radius: 1000px;
+											width: 20px;
+											height: 20px;
+											display: inline-block;
+											text-align: center;
+										"><div>✔</div></span>
+										<span class="TextBody1"
+											style="
+											margin-left: 6px;
+											position: relative;
+											bottom: -0.2em;
+											overflow: hidden;
+										">
+											{{item}}
+										</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<!--<div class="Separator1"></div>-->
+					<div class="TwoColumn">
+						<div class="Right1">				
+							
+							<div>
+								<div ng-repeat="item in disallowed" class="_calloutAllowDisallow_ListItem">
+									<div>
+										<span class="VerticalCenterAlignHack"
+											style="
+											color: rgba(255,255,255, 1.0);
+											font-family: 'montserrat';
+											font-size: 1em;
+											font-weight: 400;
+											background-color: rgba(255,0,0, 0.5);
+											border-radius: 1000px;
+											width: 20px;
+											height: 20px;
+											display: inline-block;
+											text-align: center;
+										"><div>✘</div></span>
+										<span class="TextBody1"
+											style="
+											margin-left: 6px;
+											position: relative;
+											bottom: -0.2em;
+										">
+											{{item}}
+										</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div ng-if="footer != undefined" ng-bind-html="footer" class="TextBody2 Centered ItalicText DimText1"
+					style="
+					margin-bottom: 0px;
+				">
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	
+</html>

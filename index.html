@@ -1,1 +1,1570 @@
-test
+﻿<!DOCTYPE html>
+<html>
+	
+	<!--
+		
+		!!  IMPORTANT COMPATIBILITY CONSIDERATIONS  !!
+		
+		This document and all related assets (js, media, etc) is conformant to the capabilities of Chromium 18. This is necessary to ensure it will display as intended on the release branch of Garry's Mod, which uses an ancient version of Awesomium that is built upon M18.
+		
+		Accordingly, whatever M18-compliant code is used here MUST ALSO be compatible with the M86 version of Chromium that is used in the x86-64 Gmod branch's version of CEF!
+		
+	-->
+	
+	<head>
+		
+		<meta charset="UTF-8">
+		<title>Stardust Grove Server Rules</title>
+		<link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" type="text/css" href="font/source-sans-3-v18.css">
+		<link rel="stylesheet" type="text/css" href="font/montserrat-v29.css">
+		<!--<link rel="icon" type="image/png" href="favicon.png">-->
+		
+		<script type="text/javascript" src="live.js"></script> <!-- automatically refreshes page (with something like 60% reliability) when changes to this file or its referenced files are saved (only works over http://, NOT over file://) -->
+		
+		<!--<script type="text/javascript" src="js/lib/array-from-polyfill-mdn.js"></script>-->
+		
+		<script type="text/javascript" src="js/lib/angular-1.2.32.min.js"></script>
+		<script type="text/javascript" src="js/lib/angular-sanitize-1.2.32.min.js"></script>
+		
+		<script type="text/javascript" src="js/lib/jquery-1.12.4.min.js"></script>
+		<!--<script type="text/javascript" src="js/lib/jquery.scrollTo-1.4.14.min.js"></script>-->
+		
+	</head>
+	
+	
+	<body ng-app="SgRulesApp" ng-controller="SgRulesController">
+		
+		<!-- Body layout structure -->
+		<div class="BodyStructureRoot ClearfixContainer" style="max-width:1400px;">
+			
+			<!-- Left sidebar column -->
+			<div id="LeftSidebar" class="Sidebar LeftColumn">
+			
+				<!-- Spacer to match first body panel in center column -->
+				<div id="LeftSidebarTopDummySpacer" style="height:10px"></div> <!-- js controls the height of this element to match the one in the body -->
+				
+				<div id="LeftSidebarInner" style="overflow-y:scroll;">
+					
+					<div class="SidebarPanel">
+						<div class="LineBreak4"></div>
+						<div class="VerticalListWithGutter1">
+						
+							<div class="SidebarButtonL1" jump-anchor="MainBodyQuickstartPanel">Quickstart</div>
+							
+							<div class="SidebarButtonL1" jump-anchor="MainBodyCommunityRulesPanel">Community Rules</div>
+							
+							<div>
+								<div class="SidebarButtonL1" jump-anchor="MainBodyRoleplayRulesPanel">Roleplay Rules</div>
+								<div class="VerticalListWithGutter3" style="margin-left:6px;">
+									<div class="LineBreak5"></div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPGeneralRulesSubpanel">General Rules</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPeventkoswarnadvertRulesSubpanel"><span class="CalloutText1 ItalicText SemiboldText">/event</span> and <span class="CalloutText1 ItalicText SemiboldText">/koswarn</span></div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPCitizenRulesSubpanel">Citizens</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPGovernmentRulesSubpanel">Government</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPCriminalGangterRulesSubpanel">Criminals & Gangsters</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPCrimesRulesSubpanel">Crimes</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPBuildingBasingRulesSubpanel">Building & Basing</div>
+									
+									<div class="SidebarButtonL2" jump-anchor="MainBodyRPPassiveRulesSubpanel">Passive Roleplay</div>
+								</div>
+							</div>
+							
+							<div class="SidebarButtonL1" jump-anchor="MainBodyPacPpmRulesPanel">PAC3/PPM2 Rules</div>
+							
+							<div class="SidebarButtonL1" jump-anchor="MainBodyWiremodRulesPanel">Wiremod Rules</div>
+							
+							<div class="SidebarButtonL1" jump-anchor="MainBodyNsfwRulesPanel">NSFW Rules</div>
+						</div>
+						<div class="LineBreak4"></div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!-- Right sidebar column -->
+			<div class="Sidebar RightColumn">
+				<!-- empty dummy, for spacing only -->
+			</div>
+			
+			<!-- Main central column -->
+			<div id="MainBodyCenter" class="Center">
+				
+				<!-- spacer; scrollbar top fake margin matches this -->
+				<div style="height:10px;"></div>
+				
+				<!-- Header panel -->
+				<div id="MainBodyHeaderPanel" class="BodyBigPanel">
+					<div class="Centered">
+						<img src="img/logo.png" style="width:300px; height:300px; margin-top:14px;"/>
+						<div style="margin-top:14px"></div>
+						<div class="TextHeader1">
+							Stardust Grove RP Rules
+						</div>
+						<div class="TextHeader3">
+							<span class="SemiboldText">Last Updated: May 24th, 2025
+						</div>
+						<div class="LineBreak4"></div>
+						<div class="TextHeader3">
+							<span class="BoldText">This server is strictly 18+.</span> Adults only. No exceptions.
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- ================================================================================
+				 |
+				 |	  Quickstart
+				 |
+				 ================================================================================ -->
+				 
+				<div id="MainBodyQuickstartPanel" class="BodyBigPanelBold">
+					<div class="Centered TextHeader2">
+						Quickstart
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					<div class="GenericColumns ClearfixContainer" style="margin:4px; padding-bottom:8px;">
+						<div class="ThreeColumn">
+							<div class="Left2">
+								<div>
+									<span class="NumBadge1"><div>1</div></span>
+									<span class="TextHeader3" style="margin-left:10px;">DarkRP Basics</span>
+								</div>
+								<br/>
+								<div class="TextBody2">
+									Do not Random Deathmatch (RDM).
+								</div>
+								<div class="TextBody2">
+									Do not metagame. Out-of-character (OOC) info is never valid in-character.
+								</div>
+								<div class="TextBody2">
+									We <span class="ItalicText">don't</span> have a strict New Life Rule (NLR).
+								</div>
+								<div class="TextBody2">
+									Find fun and creative ways to join other players' roleplay without derailing it.
+								</div>
+							</div>
+						</div>
+						<div class="Separator1" style=""></div>
+						<div class="ThreeColumn">
+							<div class="Center2">
+								<div>
+									<span class="NumBadge1"><div>2</div></span>
+									<span class="TextHeader3" style="margin-left:10px;">Use /event and /koswarn</span>
+								</div>
+								<br/>
+								<div class="TextBody2">Do <span class="BoldText">not</span> use <span class="CalloutText1 ItalicText SemiboldText">/advert</span> to announce raids, mugs, kidnaps, crimes, etc.</div>
+								<div class="TextBody2">Do <span class="BoldText">not</span> use <span class="CalloutText1 ItalicText SemiboldText">/advert</span> to announce KOS warnings.</div>
+								<div class="TextBody2">Use <span class="CalloutText1 ItalicText SemiboldText">/event</span> and <span class="CalloutText1 ItalicText SemiboldText">/koswarn</span> instead to declare these roleplay actions.</div>
+							</div>
+						</div>
+						<div class="Separator1"></div>
+						<div class="ThreeColumn">
+							<div class="Right2">
+								<div>
+									<span class="NumBadge1"><div>3</div></span>
+									<span class="TextHeader3" style="margin-left:10px;">Use @ to get help</span>
+								</div>
+								<br/>
+								<div class="TextBody2">Need assistance?</div>
+								<div class="TextBody2">Send an @ message in chat to ask ingame staff for help.</div>
+								<div class="TextBody2">Or, open a ticket in our Discord server.</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="TextHeader2Hr" style="opacity:0.5;"></div>
+					<div class="Centered" style="margin-top:10px;">
+						<span class="NumBadge1"><div>4</div></span>
+						<span class="TextHeader3" style="margin-left:10px;">READ THE FULL RULES!</span>
+					</div>
+					<br/>
+					<div class="TextHeader2Hr" style="opacity:0.5;"></div>
+					
+				</div>
+				
+				
+				<!-- ================================================================================
+				 |
+				 |	  Community Rules
+				 |
+				 ================================================================================ -->
+				 
+				<div id="MainBodyCommunityRulesPanel" class="BodyBigPanel">
+				
+					<div class="Centered TextHeader2">
+						Community Rules
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					<div class="Centered TextBody2">
+						These basic rules are <span class="SemiboldText">always</span> in effect for <span class="SemiboldText">everyone</span> at <span class="SemiboldText">all times</span>.
+					</div>
+					
+					<ol class="NumberedList1 TextBody2">
+						
+						<li><span class="Front">Be a decent human being.</span></li>
+						
+						<li><span class="Front">Respect the server.</span> Expect good faith from <span class="ItalicText">all</span> other players, since it is expected from you.</li>
+						
+						<li><span class="Front">Play clean.</span> Do not use scripts, hacks, cheats and other illegitimate exploits.</li>
+						
+						<li><span class="Front">Know the boundaries.</span> Do not <span class="ItalicText">abuse</span> exploits or loopholes.</li>
+						
+						<li><span class="Front">Understand our server culture.</span> Take the time to learn how we play this game and interact with each other. This is a complex community with a lot of history!</li>
+						
+						<!--<div class="Important Centered" style="margin-top:18px; margin-bottom:18px;">
+							The following rules <span class="ItalicText">should</span> be obvious to everyone. We include them here because they are not.
+						</div>-->
+						
+						<li class="Important">
+							<span class="Front">Do not play vigilante.</span> Leave moderation to the moderators.
+							<br/>Do not assume new players are minges. Do not witchhunt/RDM/harass new players or incite others to do so.
+							<br/>Do not assume other players want their gameplay interrupted by staff. If they want staff intervention, they will ask for it.
+						</li>
+						
+						<li class="Important">
+							<span class="Front">Do not be a piece of shit.</span> Malice, deception, apologism, shit stirring, drama whoring, slander, gross disrespect, harassment, hate speech, racism, and other forms of degenerate behavior are strictly prohibited.
+							<br/>Do not use offensive, obnoxious, or hateful language to intentionally agitate someone out-of-character.
+							<br/>Do not incite or encourage toxicity or arguments in OOC chat or in our Discord server.
+						</li>
+						
+						<li class="Important">
+							<span class="Front">Do not interfere with other players' ability to play the game.</span>
+							<br/>Do not cause unnecessary lag to the server or to other players.
+							<br/>Do not deliberately crash the server or other players.
+						</li>
+						
+						<li class="Important">
+							<span class="Front">Do not impersonate other people.</span>
+							<br/>Do not set your ingame name/avatar or Discord name/avatar to that of another player.
+						</li>
+						
+						<li class="Important">
+							<span class="Front">Do not disrespect conflicts.</span> When altercations between people escalate to moderation action, be respectful and polite.
+							<br/>Do not interfere with the conflict resolution process.
+							<br/>Do not disrespect the upstanding parties involved in the resolution process.
+						</li>
+						
+					</ol>
+					
+				</div>
+				
+				<!-- Roleplay Rules -->
+				<div id="MainBodyRoleplayRulesPanel" class="BodyBigPanel">
+				
+					<div class="Centered TextHeader2">
+						Roleplay Rules
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  General rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPGeneralRulesSubpanel" class="BodyBigPanel">
+					
+						<div class="TextHeader3 Centered">
+							General Rules
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<ol class="NumberedList1 TextBody2">
+						
+							<li>Do not Random Deathmatch (RDM). You must have a legitimate in-character reason to kill another player.</li>
+							
+							<li>
+								<div>Do not violate New Life Rule (NLR). This takes effect if you are killed.</div>
+								<div class="LineBreak4"></div>
+								<ul class="BulletList1">
+									<li>You are <span class="SemiboldText">not</span> required to forget all in-character information from before your death.</li>
+									<li>You <span class="SemiboldText">can</span> return to your place of death immediately.</li>
+									<li>However, you <span class="SemiboldText">cannot</span> re-engage with whatever you were doing that resulted in your death.</li>
+								</ul>
+							</li>
+							
+							<li>Do not self-supply, unless there is no one else to fill the job you wish to buy items from.</li>
+							
+							<li>Do not metagame. Out-of-character information is never justification for in-character actions.</li>
+							
+							<li>
+								<div>Do not commit FailRP. We define this as the act of shutting down legitimate roleplay interaction in a cheap way.</div>
+								<div class="ItalicText DimText2">Examples of FailRP: killbing/teleporting/propflying away to escape combat, welding your vehicle to the world to prevent carjacking, not actually doing your DarkRP job</div>
+							</li>
+							
+							<li>
+								<div>Being AFK does not grant you immunity to anything.</div>
+								<div class="ItalicText DimText2">If you are afk in a public area, you fully accept all consequences of being attacked, raided, kidnapped, killed, etc. Consider going afk in the spawn protection zone instead.</div>
+							</li>
+							
+							<li>Do not grossly disrupt or interfere with other players' roleplay without a fun or creative reason <span class="SemiboldText">for all players involved</span>.</li>
+							
+							<li>
+								<div>Do not micspam out-of-character, and do not play ear rape through voice chat.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Examples of <span style="color:rgba(60,255,60, 0.9);">acceptable</span> micspam (<span class="SemiboldText">within reason</span>): hobos rioting outside government buildings, raiders taunting base defenders, excited cheering after winning a fight</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Examples of <span style="color:rgba(255,60,60, 0.9);">prohibited</span> micspam: randomly playing ear-splitting noises when players are trying to talk to each other, covering up ingame noises (like footsteps, lockpicking, gunfire) with constant micspam during a raid</div>
+							</li>
+							
+						</ol>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  /event, /koswarn, and /advert re-education & rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPeventkoswarnadvertRulesSubpanel" class="BodyBigPanel">
+						
+						<div class="TextHeader3 Centered">
+							<span class="CalloutText2 ItalicText SemiboldText">/event</span> and <span class="CalloutText2 ItalicText SemiboldText">/koswarn</span>
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<div class="LineBreak4"></div>
+						<div class="TextBody1 Centered ItalicText DimText1">In order to faciliate easier moderation of roleplay, you are required to clearly indicate certain roleplay actions that may escalate out-of-character conflicts and provoke moderator intervention.</div>
+						<div class="LineBreak3"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							/event
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = '<span class=\'CalloutText1\'>/event</span>';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>
+								<div>You must use the <span class="CalloutText1 ItalicText SemiboldText">/event</span> command to declare sensitive roleplay actions.</div>
+								
+								<div class="LineBreak4"></div>
+								
+								<div>Do <span class="SemiboldText">not</span> use <span class="CalloutText1 ItalicText SemiboldText">/advert</span> to declare sensitive roleplay actions. <span class="CalloutText1 ItalicText SemiboldText">/advert</span> is strictly in-character global chat.</div>
+								
+								<div class="LineBreak3"></div>
+								
+								<div class="CalloutPanelHori1">
+									<div class="Inner">
+										
+										<div class="Title">
+											<div class="BoldText DimText1">
+												Don't metagame yourself!
+											</div>
+										</div>
+										
+										<div class="Body">
+											<div><span class="SemiboldText">Everything</span> you say in <span class="CalloutText1 ItalicText SemiboldText">/advert</span> chat is legitimate in-character information for everyone else.</div>
+											<div class="LineBreak4"></div>
+											<div class="ItalicText DimText1">For example, if you announce you are performing a raid in <span class="CalloutText1 ItalicText SemiboldText">/advert</span>, the police have every right to immediately hunt you down!</div>
+											<div class="LineBreak4"></div>
+											<div>In contrast, your <span class="CalloutText1 ItalicText SemiboldText">/event</span> messages are only visible to moderators, which protects you from metagaming.</div>
+										</div>
+										
+									</div>
+								</div>
+								
+							</li>
+							
+							<li>
+								<div>You must declare the following sensitive roleplay actions with <span class="CalloutText1 ItalicText SemiboldText">/event</span>:</div>
+								
+								<div class="LineBreak4"></div>
+								
+								<ul class="BulletList1">
+									
+									<li>
+										<div><span class="SemiboldText">Muggings</span></div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event mug</span> when you initiate/join the mugging</div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event mug over</span> when the mugging has concluded</div>
+									</li>
+									
+									<li>
+										<div><span class="SemiboldText">Raids</span></div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event raid</span> when you initiate/join the raid</div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event raid over</span> when the raid has concluded and you have vacated the target area</div>
+									</li>
+									
+									<li>
+										<div><span class="SemiboldText">Kidnappings</span></div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event kidnap</span> when you initiate/join the kidnapping</div>
+										<div class="LineBreak3"></div>
+										<div>You must <span class="CalloutText1 ItalicText SemiboldText">/event kidnap over</span> when the kidnapping has concluded and the hostage is released</div>
+									</li>
+									
+								</ul>
+								
+							</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							/koswarn
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = '<span class=\'CalloutText1\'>/koswarn</span>';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>
+								<div>You must use the <span class="CalloutText1 ItalicText SemiboldText">/koswarn</span> command to warn another player before you can consider them kill-on-sight (KOS) in unexpected, ambiguous, or spontaneous situations.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(60,255,60, 0.9);">required</span> situations: you mug someone on the street, you want to shoot someone who hasn't attacked you yet, someone trespasses into your base and you <span class=SemiboldText>don't</span> have a KOS line</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">non-required</span> situations: someone else mugs you, someone else is shooting at you, someone raids your base</div>
+							</li>
+							
+							<li>
+								<div>You must wait 5 seconds after sending your warning message before you can take hostile action against your target.</div>
+								<div class="LineBreak4"></div>
+								<div>If you target responds with hostility before 5 seconds have elapsed, you may engage them likewise before the full 5 seconds have elapsed.</div>
+							</li>
+							
+							<li>
+								<div>Your warning message must be <span class="SemiboldText">clear</span> and easy to read at a quick glance. Deceptive, confusing, irrelevant, and excessively long messages are prohibited.</div>
+								
+								<div class="LineBreak4"></div>
+								
+								<div class="ItalicText DimText2">
+									<div>Example <span style="color:rgba(60,255,60, 0.9);">valid</span> messages:</div>
+									<ul class="BulletList2">
+										<div class="LineBreak5"></div>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> dont get any closer</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> drop your gun right now</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> pay up or else</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> get out of my house</span></li>
+									</ul>
+								</div>
+								
+								<div class="LineBreak4"></div>
+								
+								<div class="ItalicText DimText2">
+									<div>Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> messages:</div>
+									<ul class="BulletList2">
+										<div class="LineBreak5"></div>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> cry about it later lololol</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> owo what's this? &gt;w&lt;</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> Oh, how sad. I guess this one doesn't want to play with me...</span></li>
+										<li><span class="CalloutText1"><span class="SemiboldText">/koswarn</span> Attention, this is your final warning. You are currently operating in a restricted zone under my command, and any further unauthorized movement will be met with lethal force. Consider this your last chance to stand down and avoid engagement. Failure to comply will result in immediate tactical response and neutralization protocols being initiated.</span></li>
+									</ul>
+								</div>
+								
+							</li>
+							
+						</ol>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Citizen rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPCitizenRulesSubpanel" class="BodyBigPanel">
+						<div class="TextHeader3 Centered">
+							Citizens
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<!--<div class="LineBreak4"></div>
+						<div class="TextBody1 Centered ItalicText DimText1">Many DarkRP jobs have specific restrictions and requirements that must be followed.</div>
+						<div class="LineBreak3"></div>-->
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOBS: Citizens Group
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'GROUP:';
+							title = 'All Citizens';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<darkrp-job-bubble-strip-1 ng-init="
+										items = ['Baristas', 'Bartenders', 'Civilians', 'City Workers', 'Club Owners', 'Cooks', 'Farmers', 'Fire Fighters', 'Fire Fighter Chiefs', 'Gold Diggers', 'Gun Dealers', 'Hobos', 'Mechanics', 'Medics', 'Moonshine Distillers', 'Master Moonshine Distillers', 'Radio Hosts', 'Retro Miners'];
+										">
+									</darkrp-job-bubble-strip-1>
+									<div class="LineBreak2"></div>
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>
+											<div>The only crimes you may commit are petty crimes.</div>
+											<div class="LineBreak4"></div>
+											<div class="ItalicText DimText2">Example <span style="color:rgba(60,255,60, 0.9);">permitted</span> crimes: vandalism, pickpocketing, shoplifting, carjacking, theft of minor items, breaking the government's laws</div>
+											<!--<div class="LineBreak4"></div>
+											<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">prohibited</span> crimes: raiding the PD, kidnapping the mayor</div>-->
+										</li>
+										
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											allowed = ['Petty crimes'];
+											disallowed = ['Mug', 'Raid', 'Kidnap', 'Assassination'];
+											">
+										</callout-allow-disallow>
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & crime with';
+											allowed = ['Citizen jobs'];
+											disallowed = ['Government jobs', 'Criminal jobs', 'Gangster jobs'];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOB: Hobo
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'JOB:';
+							title = 'Hobo';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<!--<div class="TextBody2 ItalicText DimText1" style="margin-bottom:1.25em;">
+										Worthless street scum with a penchant for being obnoxious.
+									</div>-->
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>You cannot own any doors/properties.</li>
+										
+										<li>You cannot build <span class="ItalicText">inside</span> another player's property.</li>
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											header = 'Same as \'All Citizens\' group';
+											allowed = [];
+											disallowed = [];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & crime with';
+											allowed = ['Only other hobos'];
+											disallowed = ['Other citizen jobs', 'Government jobs', 'Criminal jobs', 'Gangster jobs'];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Government rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPGovernmentRulesSubpanel" class="BodyBigPanel">
+						<div class="TextHeader3 Centered">
+							Government
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOBS: Government Group
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'GROUP:';
+							title = 'All Government';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<darkrp-job-bubble-strip-1 ng-init="
+										items = ['Detectives', 'Mayors', 'Police Chiefs', 'Police Officers', 'Police Quartermasters'];
+										">
+									</darkrp-job-bubble-strip-1>
+									<div class="LineBreak2"></div>
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>You must have a legitimate in-character reason to want, warrant, arrest, kill, raid, or otherwise disturb the roleplay of other players.</li>
+										
+										<li>
+											<div>You must use <span class="CalloutText1 ItalicText SemiboldText">/event</span> to declare police raids.</div>
+											<div class="LineBreak4"></div>
+											<div>Refer to the <span class="CalloutText1 SemiboldText"><span class="ItalicText">/event</span> and <span class="ItalicText">/koswarn</span></span> section.</div>
+										</li>
+										
+										<li>
+											<div>Police raids have the same raiding rules as criminal raids.</div>
+											<div class="LineBreak4"></div>
+											<div>Refer to the <span class="CalloutText1 SemiboldText">Crimes &gt; Raiding</span> section.</div>
+										</li>
+										
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP counter-crimes';
+											allowed = ['Police raid'];
+											disallowed = [];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											allowed = ['Petty crimes'];
+											disallowed = ['Mug', 'Raid', 'Kidnap', 'Assassination'];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & counter-crime with';
+											allowed = ['Government jobs'];
+											disallowed = ['Citizen jobs', 'Criminal jobs', 'Gangster jobs'];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOB: Mayor
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'JOB:';
+							title = 'Mayor';
+							">
+						</darkrp-job-header-line>
+						
+						<!--<div class="TextBody2 ItalicText DimText1" style="margin-bottom:1.25em;">
+							Writes laws to energize server-wide roleplay. Often dies to hitmen.
+						</div>-->
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>You must establish your laws within your first 20 minutes as mayor.</li>
+										
+										<li>You must place at least one lawboard in an accessible location.</li>
+										
+										<li>All of your lawboards must clearly visible and cannot be obstructed.</li>
+										
+										<li>You must <span class="CalloutText1 ItalicText SemiboldText">/broadcast</span> a message to notify all players once you have finished creating your initial laws.</li>
+										
+										<li>You must also <span class="CalloutText1 ItalicText SemiboldText">/broadcast</span> a message to notify all players whenever you make significant changes to the laws.</li>
+										
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP counter-crimes';
+											header = 'Same as \'All Government\' group';
+											allowed = [];
+											disallowed = [];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											header = 'Same as \'All Government\' group';
+											allowed = [];
+											disallowed = [];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & counter-crime with';
+											header = 'Same as \'All Government\' group';
+											allowed = [];
+											disallowed = [];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Laws
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Laws';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>By default, all DarkRP interactions are legal, unless stated otherwise by the lawboard.</li>
+							
+							<li>The default three laws cannot be removed, overrided, or altered.</li>
+							
+							<li>
+								<div>The laws must relate to in-character DarkRP interactions.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(60,255,60, 0.9);">valid</span> laws: "Only pistols are legal to own", "Jaywalking is AOS", "Guns out inside PD is KOS"</div>
+							</li>
+							
+							<li>
+								<div>The laws must be reasonably clear to all players and reasonably enforceable by police.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(60,255,60, 0.9);">valid</span> laws: "Hobos near PD are AOS", "Owning a gun is KOS"</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> laws: "no hobos allowed", "guns are bad"</div>
+							</li>
+							
+							<li>
+								<div>The laws cannot forbid fundamental/unavoidable player actions.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> laws: "Crouching is illegal", "Using voice inside PD is AOS", "Standing inside city hall is KOS"</div>
+							</li>
+							
+							<li>
+								<div>The laws cannot defy the Stardust Grove RP rules.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> laws: "Criminals can base with government", "Passive zones can be raided", "Bases can have hidden keypads"</div>
+							</li>
+							
+							<li>
+								<div>The laws cannot include gross discrimination, harassment, or hate speech.</div>
+								<div class="LineBreak4"></div>
+								<div class="ItalicText DimText2">Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> laws: "All pegasi are KOS", "[player] is KOS", "[group] is [slur] and [ranting irrelevant to DarkRP]"</div>
+							</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Criminal & Gangster rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPCriminalGangterRulesSubpanel" class="BodyBigPanel">
+						<div class="TextHeader3 Centered">
+							Criminals & Gangsters
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOBS: Criminals Group
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'GROUP:';
+							title = 'All Criminals & Gangsters';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<darkrp-job-bubble-strip-1 ng-init="
+										items = ['Artificers', 'Hitmen', 'Meth Cooks', 'Premium Growers', 'Thieves', 'Weed Growers'];
+										">
+									</darkrp-job-bubble-strip-1>
+									<div class="LineBreak2"></div>
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>These jobs are permitted to commit classic and significant <span>DarkRP</span> crimes, beyond the limited petty crimes that Citizen jobs may commit.</li>
+										
+										<li>
+											<div>You must use <span class="CalloutText1 ItalicText SemiboldText">/event</span> to declare certain crimes.</div>
+											<div class="LineBreak4"></div>
+											<div>Refer to the <span class="CalloutText1 SemiboldText"><span class="ItalicText">/event</span> and <span class="ItalicText">/koswarn</span></span> section.</div>
+										</li>
+										
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											allowed = ['Petty crimes', 'Mug', 'Raid', 'Kidnap'];
+											disallowed = ['Assassination'];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & crime with';
+											allowed = ['Criminal jobs', 'Gangster jobs'];
+											disallowed = ['Citizen jobs', 'Government jobs'];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="LineBreak1"></div>
+						
+						
+						<!-- ---------------------------------------------------------------------------
+							JOB: Hitman
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'JOB:';
+							title = 'Hitman';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<!--<div class="TextBody2 ItalicText DimText1" style="margin-bottom:1.25em;">
+										Assassins for hire. Tend to provoke moderation action.
+									</div>-->
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>
+											<div>You must be given a DarkRP-related, in-character reason by your client before you can accept their hit.</div>
+											<div class="LineBreak4"></div>
+											<div class="CalloutText2 ItalicText DimText1">Example <span style="color:rgba(60,255,60, 0.9);">valid</span> reasons: "they mugged me", "he murdered my friend", "he crossed my base's kos line", "i hate the laws and the mayor wont change them"</div>
+											<div class="LineBreak4"></div>
+											<div class="CalloutText2 ItalicText DimText1">Example <span style="color:rgba(255,60,60, 0.9);">invalid</span> reasons: "they are ugly", "i don't like them", "they said something mean to me in a Discord server"</div>
+										</li>
+										
+										<li>Hitmen cannot request hits from other hitmen.</li>
+										
+										<li>You cannot accept excessive repeated hits on the same target. You must use your own discretion to judge the likelihood of the target requesting moderation action.</li>
+									</ol>
+									
+									<div class="LineBreak3"></div>
+									<div class="TextBody2 ImportantRuleText">
+										<span class="SemiboldText">This job demands caution.</span> Hitmen often cause out-of-character altercations between players.
+									</div>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+
+							<!--<div class="Separator1"></div>-->
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Permitted DarkRP crimes';
+											header = 'Same as \'All Criminals & Gangsters\' group, <span class=\'BoldText\'>plus</span>:';
+											allowed = ['Assassination'];
+											disallowed = [];
+											">
+										</callout-allow-disallow>				
+									</div>
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base & crime with';
+											header = 'Same as \'All Criminals & Gangsters\' group';
+											allowed = [];
+											disallowed = [];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Crimes rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPCrimesRulesSubpanel" class="BodyBigPanel">
+						<div class="TextHeader3 Centered">
+							Crimes
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<!--<div class="LineBreak4"></div>
+						<div class="TextBody1 Centered ItalicText DimText1">Most DarkRP jobs are permitted to commit a variety of general crimes, ranging from petty to grand.</div>
+						<div class="LineBreak3"></div>-->
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>You must have a legitimate in-character reason to commit a crime agaist and disturb the roleplay of other players.</li>
+							
+							<li>
+								<div>You must use <span class="CalloutText1 ItalicText SemiboldText">/event</span> to declare certain crimes.</div>
+								<div class="LineBreak4"></div>
+								<div>Refer to the <span class="CalloutText1 SemiboldText"><span class="ItalicText">/event</span> and <span class="ItalicText">/koswarn</span></span> section.</div>
+							</li>
+							
+							<li>Do not excessively and repeatedly commit the same crime against the same target to the point of oppression.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Mugging
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Mugging';
+							tags = ['Must /event'];
+						">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>When mugging a player, you must give them at least 10 seconds to respond, before taking hostile action against them.</li>
+							
+							<li>You cannot demand more than $10K in a single mugging.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Raiding
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Raiding';
+							tags = ['Must /event'];
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>Only criminal and government jobs can perform raids.</li>
+							
+							<li>You cannot raid player builds that have "building in progress" signs on them. Permanent public establishments (like city hall) are the exception and can always be raided at any time.</li>
+							
+							<li>You cannot start a raid while you are already inside area you want to raid. You must <span class="CalloutText1b ItalicText SemiboldText">/event raid</span> immediately <span class="SemiboldText">before</span> you enter the premises.</li>
+							
+							<li>Raids cannot engage & occupy the target area for longer than 30 minutes. You must leave the premises and <span class="CalloutText1b ItalicText SemiboldText">/event raid over</span> <span class="SemiboldText">before</span> 30 minutes have elapsed.</li>
+							
+							<li>You cannot end a raid while you are still inside the target area.</li>
+							
+							<li> After raiding a target, you must wait at least 10 minutes before you can pariticipate in another raid against that same target.</li>
+							
+							<li>
+								<div>You cannot participate in a raid from an excessive distance.</div>
+								<div class="ItalicText DimText2">For example, taking up a sniper perch across the street is permitted, but sniping all the way from the other side of the city block is disallowed.</div>
+							</li>
+							
+							<li>During a raid, neither side can shut down the raid by building <span class="SemiboldText">invulnerable & impassible</span> obstacles. Any obstacle you construct must be destructible (e.g. by molotov fire).</li>
+						
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Kidnapping
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Kidnapping';
+							tags = ['Must /event'];
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>Only criminal jobs can perform kidnappings.</li>
+							
+							<li>You cannot hold a player hostage for more than 30 minutes, if they wish to be released.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Assassinations
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Assassination';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>
+								<div>Only the Hitman job can accept hits to peform assassinations.</div>
+								<div class="LineBreak4"></div>
+								<div>Refer to the <span class="CalloutText1 SemiboldText">Criminals & Gangsters &gt; Hitman</span> section for details.</div>
+							</li>
+							
+							<li>Placing hits on other players requires a legitimate in-character reason.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Building & Basing rules
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPBuildingBasingRulesSubpanel" class="BodyBigPanel">
+						<div class="TextHeader3 Centered">
+							Building and Basing
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Public builds
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Public Builds';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>You cannot block access to a building with public builds. If your public build blocks access to an ownable building, you must purchase the doors to that building and claim it as your base.</li>
+							
+							<li>You cannot create "public" builds that obstruct or occupy job-specific DarkRP locations, such the police department and or the bank. Only the relevant DarkRP jobs can build in these locations.</li>
+							
+							<li>If access to any part of your public build is restricted in any way, the entire build cannot harbor any raidable goods.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							Bases
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							title = 'Bases';
+							">
+						</darkrp-job-header-line>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>
+								<div>To claim an area as your base, you must own all doors that provide access to the area.</div>
+								<div class="ItalicText DimText2">For example, if you want to base in an apartment, you must own the apartment's door(s). If you want to claim the entire apartment building, you must own every door inside the building.</div>
+							</li>
+							
+							<li>You cannot build a base that surrounds another player's base without their permission.</li>
+							
+							<li>You cannot build flying, underwater, or mobile bases.</li>
+							
+							<li>You cannot harbor any raidable goods inside your base while you have any "building in progress" signs on your base.</li>
+							
+							<li>If you choose to protect your base with a "building in progress" sign, you must place a <span class="SemiboldText">large, clear, and obvious</span> copy of the sign on <span class="SemiboldText">every entrance</span> to the base.</li>
+							
+							<li>Any kill-on-sight (KOS) lines or signs that you place on your base must be <span class="SemiboldText">large, clear, and obvious</span>.</li>
+							
+							<li>Your base cannot use any props or materials with one-way visibility or one-way bullet penetration.</li>
+							
+							<li>Your base cannot be outright impossible to raid.</li>
+							
+							<!-- Size Restrictions -->
+							<div style="margin-left:-18px; margin-top:1.2em;">
+								<div class="TextBody3 UppercaseText DimText1">Size Restrictions</div>
+								<div class="LineBreak3"></div>
+								<div class="TextHeader4Hr" style="opacity:0.3"></div>
+							</div>
+							
+							<li>
+								<div><span class="SemiboldText">All</span> passageways in your base that lead to raidable goods must be passable to the following playermodels:</div>
+								<div class="LineBreak4"></div>
+								<div></div>
+								<ul class="BulletList1">
+									<li>The PPM2 playermodel at 130% scale (body size 1.3 in the PPM2 editor) while crouching</li>
+									<li>All the standard-size human playermodels (kleiner, alyx, barney, css guys, etc) while crouching</li>
+								</ul>
+								<div class="LineBreak5"></div>
+								
+								<div class="CalloutPanelHori1">
+									<div class="Inner">
+										
+										<div class="Title">
+											<div class="BoldText DimText1">
+												Know the size!
+											</div>
+										</div>
+										
+										<div class="Body">
+											<div>Use the <span class="CalloutText1 ItalicText SemiboldText">models/hunter/blocks/cube075x1x075.mdl</span> cube prop (standing upright) to quickly check the size of your passageways.</div>
+											<div class="LineBreak3"></div>
+											<img src="img/base_passageway_size_demo.png" style="height:140px;"/>
+										</div>
+										
+									</div>
+								</div>
+								
+							</li>
+							
+							<li>
+								<div><span class="SemiboldText">All</span> gaps that you intend to shoot through must be at least 0.5x0.5x0.5 units in size.</div>
+								<div class="LineBreak4"></div>
+								
+								<div class="CalloutPanelHori1">
+									<div class="Inner">
+										
+										<div class="Title">
+											<div class="BoldText DimText1">
+												Know the size!
+											</div>
+										</div>
+										
+										<div class="Body">
+											<div>Use the <span class="CalloutText1 ItalicText SemiboldText">models/hunter/blocks/cube05x05x05.mdl</span> cube prop to quickly check the size of your shooty holes.</div>
+											<div class="LineBreak3"></div>
+											<img src="img/base_shooty_hole_size_demo.png" style="height:140px;"/>
+										</div>
+										
+									</div>
+								</div>
+								
+							</li>
+							
+							<!-- Fading Doors -->
+							<div style="margin-left:-18px; margin-top:1.2em;">
+								<div class="TextBody3 UppercaseText DimText1">Fading Doors</div>
+								<div class="LineBreak3"></div>
+								<div class="TextHeader4Hr" style="opacity:0.3"></div>
+							</div>
+							
+							<li>All fading door props must be reachable by lockpicks and battering rams.</li>
+							
+							<li>Your fading doors must have enough space between them to fit a crouching player, per the passageway size restriction above. You cannot place fading doors back-to-back.</li>
+							
+							<li>
+								<div>You cannot have more than 5 fading doors in your base which block any pathway towards your raidable goods.</div>
+								<div class="LineBreak4"></div>
+								<div>Non-passable fading doors, such as storage cubbies and toggleable cover, do <span class="SemiboldText">not</span> count towards this limit.</div>
+							</li>
+							
+							<li>All fading doors in your base must be linked to an ingame keypad or button entity.</li>
+							
+							<!-- Keypads -->
+							<div style="margin-left:-18px; margin-top:1.2em;">
+								<div class="TextBody3 UppercaseText DimText1">Keypads</div>
+								<div class="LineBreak3"></div>
+								<div class="TextHeader4Hr" style="opacity:0.3"></div>
+							</div>
+							
+							<li>You must exclusively use keypads to operate your fading doors. You cannot use your keyboard binds to operate your fading doors.</li>
+							
+							<li>You cannot have fake or misleading keypads. Keypads must always operate the fading door they are closest to and must be placed reasonably close to that door.</li>
+							
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+					</div>
+					
+					
+					<!-- ================================================================================
+					 |
+					 |	  Passive Roleplay
+					 |
+					 ================================================================================ -->
+					
+					<div id="MainBodyRPPassiveRulesSubpanel" class="BodyBigPanel">
+					
+						<div class="TextHeader3 Centered">
+							Passive Roleplay
+						</div>
+						<div class="TextHeader3Hr"></div>
+						
+						<div class="LineBreak4"></div>
+						<div class="TextBody1 Centered ItalicText DimText1">Interactions with Passive Roleplayers have special rules. The Passive Roleplayer job constructs passive roleplay zones and engages in freeform roleplay, <span class="SemiboldText">separate from everyone else on the server</span>.</div>
+						<div class="LineBreak3"></div>
+						
+						<ol class="NumberedList1 TextBody2">
+							
+							<li>
+								<div>Passive Roleplayers cannot engage in any DarkRP context.</div>
+								<div class="LineBreak3"></div>
+								<ul class="BulletList1">
+									<li>Passive Roleplayers and passive roleplay zones cannot obstruct/intervene with normal DarkRP interactions.</li>
+									<li>Passive Roleplayers and passive roleplay zones cannot possess any DarkRP elements, including weapons, drugs, money, printers, and any other raidable item.</li>
+								</ul>
+							</li>
+							<li>
+								<div>Normal DarkRP jobs cannot engage Passive Roleplayers in any DarkRP context.</div>
+								<div class="LineBreak3"></div>
+								<ul class="BulletList1">
+									<li>All DarkRP jobs cannot commit crimes against Passive Roleplayers or passive roleplay zones.</li>
+									<li>Government jobs cannot want, warrant, arrest, or raid Passive Roleplayers or passive roleplay zones.</li>
+								</ul>
+							</li>
+							<li>Players with a normal DarkRP job must act like a Passive Roleplayer when inside a passive roleplay zone.</li>
+							<li>As a normal DarkRP job, you <span class="SemiboldText">cannot</span> change your job to Passive Roleplayer or enter a passive roleplay zone in order to escape from a DarkRP interaction.</li>
+						</ol>
+						
+						<div class="LineBreak1"></div>
+						
+						<!-- ---------------------------------------------------------------------------
+							JOB: Passive Roleplayers
+						  ------------------------------------------------------------------------------ -->
+						<darkrp-job-header-line ng-init="
+							prefix = 'JOB:';
+							title = 'Passive Roleplayers';
+							">
+						</darkrp-job-header-line>
+						
+						<div class="GenericColumns ClearfixContainer" style="margin:4px">
+							<div class="TwoColumn">
+								<div class="Left2">
+									
+									<!--<div class="TextBody2 ItalicText DimText1" style="margin-bottom:1.25em;">
+										Freeform roleplayers who do not participate in DarkRP interactions.
+									</div>-->
+									
+									<ol class="NumberedList1 TextBody2">
+										<li>
+											<div>You are disengaged from DarkRP aspects and cannot directly interact with or influence any DarkRP elements.</div>
+											<div class="LineBreak4"></div>
+											<div>You cannot acquire items or money, carry weapons, build raidable bases, possess raidable goods, or otherwise intervene/obstruct the normal DarkRP jobs.</div>
+										</li>
+										
+										<li>You are the only "job" which can build passive roleplay zones, for conducting freeform roleplay with other passives.</li>
+										
+										<li>Your passive roleplay zones must be <span class="SemiboldText">clearly and obviously</span> marked as a passive roleplay zone <span class="SemiboldText">at all entrances</span>.</li>
+										
+										<li>Any base you build is considered a passive roleplay zone, whether you mark it correctly or not.</li>
+										
+										<li>You do <span class="BoldText">not</span> have immunity to DarkRP interactions. If you insert yourself into a DarkRP scenario and are injured/killed/wronged in any way, that is your fault.</li>
+									</ol>
+									
+									<div class="LineBreak1"></div>
+									
+								</div>
+							</div>
+							
+							<div class="TwoColumn">
+								<div class="Right2 VerticalListWithGutter1">
+									<div>
+										<callout-allow-disallow ng-init="
+											title = 'Can base with';
+											allowed = ['Only other passives'];
+											disallowed = ['Everyone else'];
+											">
+										</callout-allow-disallow>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				
+				</div>
+				
+				
+				<!-- ================================================================================
+				 |
+				 |	  PAC3 & PPM2 Rules
+				 |
+				 ================================================================================ -->
+				 
+				<div id="MainBodyPacPpmRulesPanel" class="BodyBigPanel">
+				
+					<div class="Centered TextHeader2">
+						PAC3/PPM2 Rules
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					<ol class="NumberedList1 TextBody2">
+						
+						<li>As a normal DarkRP job, your overall size cannot be smaller than 50% or larger than 130% of your playermodel's default size.</li>
+						
+						<li>As a Passive Roleplayer, your overall size cannot be smaller than 25% or larger than 300% of your playermodel's default size.</li>
+						
+						<!-- ---------------------------------------------------------------------------
+							PPM2 specific
+						  ------------------------------------------------------------------------------ -->
+						<!--<div style="margin-left:-18px; margin-top:1.2em;">
+							<div class="TextBody3 UppercaseText DimText1">PPM2</div>
+							<div class="LineBreak3"></div>
+							<div class="TextHeader4Hr" style="opacity:0.3"></div>
+						</div>-->
+						
+						<!-- None evidently -->
+						
+						<!-- ---------------------------------------------------------------------------
+							PAC specific
+						  ------------------------------------------------------------------------------ -->
+						<!--<div style="margin-left:-18px; margin-top:1.2em;">
+							<div class="TextBody3 UppercaseText DimText1">PAC3</div>
+							<div class="LineBreak3"></div>
+							<div class="TextHeader4Hr" style="opacity:0.3"></div>
+						</div>-->
+						
+						<li>Do not alter your hitboxes using PAC.</li>
+						
+						<li>Do not use PAC to place objects on players' screens or otherwise obstruct their vision.</li>
+						
+						<li>Do not use PAC to make yourself invisible, hidden underneath the ground, or otherwise imperceivable.</li>
+						
+						<li>Do not use PAC to create ear rape, seizure-inducing lights, screenshake, or other forms of sensory abuse.</li>
+						
+						<li>Do not use PAC to gain an advantage over other players in combat or roleplay scenarios, such as scouting through walls with the PAC editor's camera.</li>
+						
+						<li>You must check <span class="SemiboldText ItalicText">is explicit</span> for all NSFW parts in your PAC outfit.</li>
+						
+					</ol>
+					
+				</div>
+				
+				
+				<!-- ================================================================================
+				 |
+				 |	  Wiremod Rules
+				 |
+				 ================================================================================ -->
+				 
+				<div id="MainBodyWiremodRulesPanel" class="BodyBigPanel">
+				
+					<div class="Centered TextHeader2">
+						Wiremod Rules
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					<ol class="NumberedList1 TextBody2">
+						
+						<li>
+							<div>Do not create or use any of the following contraptions:</div>
+							<div class="LineBreak4"></div>
+							<ul class="BulletList1">
+								<li>Any kind of teleporter.</li>
+								<li>Radars which track players, items, or any kind of entity through walls or across the map.</li>
+								<li>Vehicles that can clip through the map.</li>
+								<li>Devices with ear rape, seizure-inducing lights, or other forms of sensory abuse.</li>
+								<li>Devices which spam noises or effects simply to annoy other players.</li>
+								<li>Anything which crashes or cause unnecessary lag to the server or other players.</li>
+							</ul>
+						</li>
+						
+					</ol>
+					
+				</div>
+				
+				
+				<!-- ================================================================================
+				 |
+				 |	  NSFW Rules
+				 |
+				 ================================================================================ -->
+				 
+				<div id="MainBodyNsfwRulesPanel" class="BodyBigPanel">
+				
+					<div class="Centered TextHeader2">
+						NSFW Rules
+					</div>
+					<div class="TextHeader2Hr"></div>
+					
+					<ol class="NumberedList1 TextBody2">
+						
+						<li>Do not place NSFW sprays in high-traffic public places, such as spawn or city hall.</li>
+						
+						<li>You must accurately assign a Suggestive, Questionable, or Explicit rating to your NSFW sprays.</li>
+						
+						<li>All NSFW parts in your PAC outfit must have <span class="SemiboldText ItalicText">is explicit</span> checked.</li>
+						
+						<li>You must receive consent from others players before engaging in erotic roleplay scenarios with them.</li>
+						
+						<li>Do not discuss NSFW topics in <span class="CalloutText1 ItalicText SemiboldText">/ooc</span> chat. Occasional risque jokes and quips are fine.</li>
+						
+					</ol>
+					
+				</div>
+				
+				<!-- spacer; scrollbar bottom fake margin matches this -->
+				<div style="height:10px;"></div>
+				
+			</div>
+			
+		</div>
+		
+		<script>
+			
+			//
+			// Init manual element layout manipulation
+			//
+			
+			(function() {
+				
+				var spacer = $("#LeftSidebarTopDummySpacer");
+				var leftSidebar = $("#LeftSidebar");
+				var leftSidebarInner = $("#LeftSidebarInner");
+				var mainBodyCenter = $("#MainBodyCenter");
+				var headerPanel = $("#MainBodyHeaderPanel");
+				
+				function ManualElementLayout()
+				{
+					// Amount of main header height visible
+					var fullOffset = headerPanel.outerHeight(true); // when body is not scrolled at all
+					var visibleOffset = Math.max(10, fullOffset + headerPanel.offset().top); // when body is scrolled, only use visible amount of header panel as the offset
+						// Min of 10 enforces at least 10px spacer to fit visual style of page (margin between top of sidebar and top edge of document)
+					
+					// Make spacer height match visible main header height
+					spacer.height(visibleOffset);
+					
+					// And make remainder of sidebar clamp to remaining available screen height (no easy way to do this with just css)
+					leftSidebarInner.height( leftSidebar.height() - visibleOffset );
+				};
+				
+				// Update on page resize
+				$(window).on("resize", function()
+				{
+					ManualElementLayout();
+				});
+				
+				// Update on body scroll
+				$(mainBodyCenter).on("scroll", function()
+				{
+					ManualElementLayout();
+				});
+				
+				// Always run at least once on initial page load
+				$(document).ready(function ()
+				{
+					ManualElementLayout();
+				});
+				
+			})();
+			
+			//
+			// Sidebar button navigation
+			//
+			
+			(function() {
+				
+				$(document).ready(function ()
+				{
+					var mainBodyCenter = $("#MainBodyCenter");
+					var leftSidebarInner = $("#LeftSidebarInner");
+					
+					function scrollMainBodyToElement(id)
+					{
+						var targetElement = $("#" + id);
+						mainBodyCenter.animate(
+							{ scrollTop: targetElement.offset().top - mainBodyCenter.offset().top + mainBodyCenter.scrollTop() },
+							"300ms"
+						);
+					}
+					
+					var buttons = [];
+					buttons.push.apply(buttons, leftSidebarInner.find(".SidebarButtonL1"));
+					buttons.push.apply(buttons, leftSidebarInner.find(".SidebarButtonL2"));
+					
+					buttons.forEach(function(button, i)
+					{
+						var anchorName = $(button).attr("jump-anchor");
+						if (anchorName != undefined)
+						{
+							$(button).on("click", function()
+							{
+								scrollMainBodyToElement(anchorName);
+							});
+						}
+					});
+				});
+				
+			})();
+			
+		</script>
+		
+		<script src="js/main.js"></script>
+		
+	</body>
+	
+</html>

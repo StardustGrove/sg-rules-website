@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			._calloutBasicTable_Col:not(:last-child) > div
+			{
+				padding-right: 20px;
+			}
+			
+			._calloutBasicTable_Row
+			{
+				padding: 3px 6px;
+			}
+			._calloutBasicTable_Row:nth-of-type(odd)
+			{
+				background-color: rgba(30,30,30, 0.1);
+			}
+			._calloutBasicTable_Row:nth-of-type(even)
+			{
+				background-color: rgba(255,255,255, 0.05);
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div style="
+			display: inline-block;
+			border: 1px solid rgba(255,255,255, 0.15);
+			border-radius: 4px;
+			">
+			<div id="ColumnsHost" style="
+				border-left: 4px solid rgba(255,255,255, 0.1);
+				display: table;
+			">
+				<div ng-repeat="col in columns" class="_calloutBasicTable_Col" style="
+					display:table-cell;
+					">
+					<div id="" ng-repeat="row in col" class="_calloutBasicTable_Row" ng-bind-html="row">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+</html>

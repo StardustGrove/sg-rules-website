@@ -1,0 +1,658 @@
+
+/* ----------------------------------------------------------------------------------------------------
+	 Helpers
+   ---------------------------------------------------------------------------------------------------- */
+
+.ClearfixContainer::before, .ClearfixContainer::after
+{
+	content: "";
+	display: table;
+}
+.ClearfixContainer::after
+{
+	clear: both;
+}
+.ClearfixContainer
+{
+	zoom: 1;
+}
+
+.VerticalCenterAlignHack:before	/* vertical center alignment hack without needing table-cell: https://stackoverflow.com/a/48789208 */
+{
+	content: " ";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+.VerticalCenterAlignHack div
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.VerticalListWithGutter1 > div
+{
+	margin-bottom: 10px;
+}
+.VerticalListWithGutter1 > div:last-child
+{
+	margin-bottom: 0px;
+}
+
+.VerticalListWithGutter2 > div
+{
+	margin-bottom: 6px;
+}
+.VerticalListWithGutter2 > div:last-child
+{
+	margin-bottom: 0px;
+}
+
+.VerticalListWithGutter3 > div
+{
+	margin-bottom: 2px;
+}
+.VerticalListWithGutter3 > div:last-child
+{
+	margin-bottom: 0px;
+}
+
+.HorizontalListWithGutter1 > span
+{
+	margin-right: 10px;
+}
+.HorizontalListWithGutter1 > span:last-child
+{
+	margin-right: 0px;
+}
+
+.HorizontalListWithGutter2 > span
+{
+	margin-right: 6px;
+}
+.HorizontalListWithGutter2 > span:last-child
+{
+	margin-right: 0px;
+}
+
+.HorizontalListWithGutter3 > span
+{
+	margin-right: 2px;
+}
+.HorizontalListWithGutter3 > span:last-child
+{
+	margin-right: 0px;
+}
+
+.NoWrap
+{
+	white-space: nowrap;
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------
+	 Base elements
+   ---------------------------------------------------------------------------------------------------- */
+
+/*  Scrollbars  */
+::-webkit-scrollbar
+{
+	width: 6px;
+}
+
+::-webkit-scrollbar-track
+{
+	background-color: rgba(0,0,0, 0.07);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: rgba(30,30,30, 0.6);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background-color: rgba(10,10,10, 0.7);
+}
+
+
+/* ----------------------------------------------------------------------------------------------------
+	 Body structure
+   ---------------------------------------------------------------------------------------------------- */
+
+html
+{
+	height: 100%;
+}
+
+body
+{
+	height: 100%;
+	background-image: url('img/background.png');
+	background-size: cover;
+}
+
+.BodyStructureRoot
+{
+	margin: 0 auto;
+	display: block;
+	height: 100%;
+}
+
+.BodyStructureRoot .Center
+{
+	width: auto;
+	float: none;
+	overflow: hidden; /* typical hideous css kludge (see: https://stackoverflow.com/questions/1260122/expand-a-div-to-fill-the-remaining-width) */
+	height: 100%;
+	overflow-y: scroll;
+	padding-right: 10px; /* padding between scrollbar and content */
+}
+.BodyStructureRoot .Center::-webkit-scrollbar-button
+{
+	height: 10px; /* awful kludge: use the invisible up/down buttons to act as margins since margin/padding/border do absolutely nothing on the root element and track */
+	/* height amount must match spacer divs' height amount in #MainBodyCenter */
+}
+
+.BodyStructureRoot .Sidebar
+{
+	width: 200px;
+	height: 100%;
+}
+
+.BodyStructureRoot .LeftColumn
+{
+	float: left;
+	margin-right: 10px;
+}
+
+.BodyStructureRoot .RightColumn
+{
+	float: right;
+	height: 1px;
+}
+
+
+.Centered
+{
+	text-align: center;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------
+	 Layout types
+   ---------------------------------------------------------------------------------------------------- */
+
+/*  Basic column layout  */
+.GenericColumns
+{
+	display: table;
+}
+.GenericColumns .TwoColumn
+{
+	display: table-cell;
+	height: 100%;
+	width: 50%;
+}
+.GenericColumns .ThreeColumn
+{
+	display: table-cell;
+	height: 100%;
+	width: 33.333%;
+}
+.GenericColumns .FourColumn
+{
+	display: table-cell;
+	height: 100%;
+	width: 25%;
+}
+.GenericColumns .Left1
+{
+	padding-right: 10px;
+}
+.GenericColumns .Center1
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.GenericColumns .Right1
+{
+	padding-left: 10px;
+}
+.GenericColumns .Left2
+{
+	padding-right: 16px;
+}
+.GenericColumns .Center2
+{
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.GenericColumns .Right2
+{
+	padding-left: 16px;
+}
+.GenericColumns .Separator1
+{
+	display: table-cell;
+	height: 100%;
+	min-width: 1px;
+	background-color: rgba(255,255,255, 0.25);
+}
+
+
+/* ----------------------------------------------------------------------------------------------------
+	 Thematic page elements
+   ---------------------------------------------------------------------------------------------------- */
+
+/* Default font params */
+body
+{
+	font-family: 'Source Sans 3';
+	font-size: 0.8em; /* base em size scale - css rules mean that all other em-sized elements will inherit this base scale COMBINED with their own local em size */
+	font-weight: 400;
+}
+
+/* Page layout boxes */
+.BodyBigPanel
+{
+	background-color: rgba(30,30,30, 0.5);
+	border-radius: 15px;
+	padding: 10px 14px;
+	margin-bottom: 10px;
+	overflow: hidden; /* cut off header hr lines */
+}
+.BodyBigPanelBold
+{
+	background-color: rgba(30,30,30, 0.7);
+	border-radius: 15px;
+	padding: 10px 14px;
+	margin-bottom: 10px;
+	overflow: hidden; /* cut off header hr lines */
+}
+
+.CalloutPanelVert1
+{
+	border: 1px solid rgba(255,255,255, 0.15);
+	border-radius: 4px;
+}
+.CalloutPanelVert1 > .Top
+{
+	background-color: rgba(255,255,255, 0.1);
+	padding: 3px 6px;
+	margin: 0px;
+}
+.CalloutPanelVert1 > .Bottom
+{
+	background-color: rgba(30,30,30, 0.1);
+	border-radius: 0px 0px 4px 4px;
+	padding: 6px;
+}
+
+.CalloutPanelHori1
+{
+	border: 1px solid rgba(255,255,255, 0.1);
+	border-radius: 4px;
+}
+.CalloutPanelHori1 > .Inner
+{
+	border-left: 4px solid rgba(255,255,255, 0.2);
+	border-radius: 4px;
+	height: 100%;
+}
+.CalloutPanelHori1 > .Inner > .Title
+{
+	padding: 5px 8px;
+	background-color: rgba(255,255,255, 0.1);
+}
+.CalloutPanelHori1 > .Inner > .Body
+{
+	padding: 5px 8px;
+}
+
+.SidebarPanel
+{
+	background-color: rgba(30,30,30, 0.5);
+	border-radius: 15px;
+	padding: 6px;
+	margin-bottom: 10px;
+	margin-right: 10px; /* padding between scrollbar and content */
+}
+
+.SidebarButtonL1
+{
+	color: white;
+	font-size: 1.4em;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding-bottom: 0.8em;
+	cursor: pointer;
+	padding: 4px 8px;
+	border-radius: 9px;
+	-webkit-user-select: none;
+}
+.SidebarButtonL1:hover
+{
+	background-color: rgba(255,255,255, 0.1);
+}
+
+.SidebarButtonL2
+{
+	color: white;
+	font-size: 1.2em;
+	font-weight: 400;
+	padding-bottom: 0.6em;
+	cursor: pointer;
+	padding: 4px 8px;
+	border-radius: 9px;
+	-webkit-user-select: none;
+}
+.SidebarButtonL2:hover
+{
+	background-color: rgba(255,255,255, 0.1);
+}
+
+
+
+/*  */
+
+
+/* Text elements */
+.SemiboldText
+{
+	font-weight: 600 !important;
+}
+.BoldText
+{
+	font-weight: 700 !important;
+}
+.ItalicText
+{
+	font-style: italic !important;
+}
+.SmallCapsText
+{
+	font-variant: small-caps !important;
+}
+.UppercaseText
+{
+	text-transform: uppercase !important;
+}
+.LowercaseText
+{
+	text-transform: lowercase !important;
+}
+.DimText1
+{
+	opacity: 0.7 !important;
+}
+.DimText2
+{
+	opacity: 0.55 !important;
+}
+
+.TextHeader1
+{
+	color: white;
+	font-size: 3.2em;
+	font-weight: 400;
+	margin-bottom: 0.1em;
+}
+
+.TextHeader2
+{
+	color: white;
+	margin-bottom: 0.3em;
+	font-size: 2.2em;
+	font-weight: 600;
+}
+.TextHeader2Hr
+{
+	background-color: rgba(255,255,255, 0.5);
+	width: 200%; /* because  margin-right: -10px;  does not work */
+	height: 1px;
+	margin-left: -14px; /* counteract the padding amount from BodyBigPanel */
+	margin-bottom: 12px;
+}
+
+.TextHeader3
+{
+	color: white;
+	margin-bottom: 0.4em;
+	font-size: 1.6em;
+	font-weight: 600;
+}
+.TextHeader3Hr
+{
+	background-color: rgba(255,255,255, 0.33);
+	width: 200%; /* because  margin-right: -10px;  does not work */
+	height: 1px;
+	margin-left: -14px; /* counteract the padding amount from BodyBigPanel */
+	margin-bottom: 12px;
+}
+
+.TextHeader4
+{
+	color: white;
+	margin-bottom: 0.4em;
+	font-size: 1.4em;
+	font-weight: 600;
+}
+.TextHeader4Hr
+{
+	background-image: -webkit-linear-gradient(0deg, rgba(255,255,255, 0.33) 0%, rgba(255,255,255, 0.0) 50%); /* final stop at 50% instead of 100% because of 200% width oversize*/
+	width: 200%; /* because  margin-right: -10px;  does not work */
+	height: 1px;
+	margin-left: -14px; /* counteract the padding amount from BodyBigPanel */
+	margin-bottom: 8px;
+}
+
+.TextHeader5
+{
+	color: white;
+	margin-bottom: 0.4em;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+.TextBody1
+{
+	color: white;
+	font-size: 1.2em;
+	font-weight: 400;
+	line-height: 1.2;
+	margin-bottom: 0.6em;
+}
+
+.TextBody2
+{
+	color: white;
+	font-size: 1.1em;
+	font-weight: 400;
+	line-height: 1.2;
+	margin-bottom: 0.6em;
+}
+
+.TextBody3
+{
+	color: white;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: 1.0;
+}
+
+.TextBody4
+{
+	color: white;
+	font-size: 0.9em;
+	font-weight: 400;
+	line-height: 1.0;
+}
+
+.CalloutText1
+{
+	background-color: rgba(30,30,30, 0.35);
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+.CalloutText1a
+{
+	background-color: rgba(30,30,30, 0.2);
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+.CalloutText1b
+{
+	background-color: rgba(30,30,30, 0.65);
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+
+.CalloutText2
+{
+	background-color: rgba(30,30,30, 0.35);
+	border-radius: 6px;
+	padding: 4px 8px;
+}
+
+.BubbleText1
+{
+	border: 1px solid rgba(255,255,255, 0.35);
+	border-radius: 100px;
+	padding: 1px 4px;
+}
+
+.BubbleText2
+{
+	border: 1px solid rgba(255,255,255, 0.35);
+	border-radius: 100px;
+	padding: 3px 10px;
+}
+.BubbleText2a
+{
+	border: 1px solid rgba(255,255,255, 0.25);
+	border-radius: 100px;
+	padding: 3px 10px;
+	background-color: rgba(30,30,30, 0.5);
+}
+
+.InlineHr1
+{
+	display: inline-block;
+	height: 1px;
+	background-color: rgba(255,255,255, 0.33);
+}
+
+.LineBreak1
+{
+	height: 1.5em;
+}
+.LineBreak2
+{
+	height: 1em;
+}
+.LineBreak3
+{
+	height: 0.5em;
+}
+.LineBreak4
+{
+	height: 0.3em;
+}
+.LineBreak5
+{
+	height: 0.15em;
+}
+
+
+/* Unique graphics */
+
+.NumBadge1
+{
+	color: rgba(255,255,255, 0.7);
+	font-family: "montserrat";
+	font-size: 2em;
+	font-weight: 600;
+	background-color: rgba(30,30,30, 0.5);
+	border-radius: 1000px;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+.NumBadge1:before	/* vertical center alignment hack without needing table-cell: https://stackoverflow.com/a/48789208 */
+{
+	content: " ";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+.NumBadge1 div
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+/* rules */
+.NumberedList1
+{
+	color: white;
+	font-family: 'Source Sans 3';
+	margin: 0px;
+	padding-left: 1.4em;
+}
+.NumberedList1 li
+{
+	font-size: 1em;
+	line-height: 1.3;
+	padding: 0px;
+	margin-bottom: 8px;
+}
+.NumberedList1 li .Front
+{
+	font-weight: 700; /* bolder text for the very beginning of the line */
+}
+.NumberedList1 .Important
+{
+	color: rgba(255,140,140, 1);
+}
+.ImportantRuleText /* version not scoped to NumberedList1, for use elsewhere */
+{
+	color: rgba(255,140,140, 1);
+}
+
+
+.BulletList1
+{
+	color: white;
+	font-family: 'Source Sans 3';
+	margin: 0px;
+	padding-left: 1.2em;
+}
+.BulletList1 li
+{
+	font-size: 1em;
+	line-height: 1.0;
+	padding: 0px;
+	margin-bottom: 8px;
+}
+
+.BulletList2
+{
+	color: white;
+	font-family: 'Source Sans 3';
+	margin: 0px;
+	padding-left: 1.2em;
+}
+.BulletList2 li
+{
+	font-size: 1em;
+	line-height: 1.2;
+	padding: 0px;
+	margin-bottom: 4px;
+}

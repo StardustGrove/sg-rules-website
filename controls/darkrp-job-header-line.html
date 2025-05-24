@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			
+		</style>
+	</head>
+	
+	<body>
+		<div>
+			<div ng-if="title != undefined"
+				style="
+				display: inline-block;
+			">
+				<div ng-if="prefix != undefined" ng-bind-html="prefix" class="TextBody3 CalloutText1 DimText1"
+					style="
+					display: inline-block;
+					position: relative;
+					top: -0.12em;
+					margin-right: 4px;
+				">
+				</div>
+				<div ng-bind-html="title" class="TextHeader3"
+					style="
+					display: inline-block;
+				">
+				</div>
+			</div>
+			
+			<span ng-if="tags != undefined" class="HorizontalListWithGutter2"
+				style="
+				margin-left: 14px;
+				line-height: 2.1;
+				position: relative;
+				top: -2px;
+			">
+				<span ng-repeat="tag in tags" ng-bind-html="tag" class="TextBody4 BubbleText2a" 
+					style="
+					text-transform: uppercase;
+					opacity: 0.8;
+				">
+				</span>
+			</span>
+		</div>
+		<div class="TextHeader3Hr" style="opacity:0.7;"></div>
+	</body>
+	
+</html>
