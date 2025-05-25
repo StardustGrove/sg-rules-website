@@ -118,6 +118,27 @@
 	background-color: rgba(10,10,10, 0.7);
 }
 
+/*  Links  */
+a
+{
+	color: #47ade9;
+	/*background-color: rgba(30,30,30, 0.5);*/
+}
+a:hover
+{
+	/*background-color: rgba(10,10,10, 0.7);*/
+}
+
+.LinkWrapper
+{
+	background-color: rgba(30,30,30, 0.5);
+}
+.LinkWrapper:hover
+{
+	background-color: rgba(20,20,20, 0.7);
+}
+
+
 
 /* ----------------------------------------------------------------------------------------------------
 	 Body structure
